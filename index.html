@@ -30,47 +30,20 @@
         <span class="step">01</span>
         <div>
           <h2 id="upload-heading">Upload sales report</h2>
-          <p>Choose a CSV or Excel workbook (.csv, .xls, .xlsx).</p>
+          <p>Upload an unmodified sales report. We’ll identify its columns and prepare the GST register automatically.</p>
         </div>
       </div>
       <label class="file-picker" for="file-input">
         <span class="upload-icon" aria-hidden="true">↑</span>
-        <span><strong id="file-label">Choose a file</strong><small>CSV, XLS, or XLSX</small></span>
+        <span><strong id="file-label">Choose a sales report</strong><small>CSV or Excel (.xls, .xlsx)</small></span>
         <input id="file-input" type="file" accept=".csv,.xls,.xlsx" aria-describedby="file-status">
       </label>
-      <p id="file-status" class="field-hint" aria-live="polite">Files are processed locally in your browser.</p>
-      <div id="sheet-control" class="control-row hidden">
-        <label for="sheet-select">Worksheet</label>
-        <select id="sheet-select"></select>
-      </div>
-    </section>
-
-    <section id="setup-section" class="panel hidden" aria-labelledby="setup-heading">
-      <div class="section-heading">
-        <span class="step">02</span>
-        <div>
-          <h2 id="setup-heading">Confirm columns and tax settings</h2>
-          <p>We’ll match common headings automatically. Check each match before converting.</p>
-        </div>
-      </div>
-      <div class="seller-settings">
-        <label for="seller-state">Seller state / union territory <span class="required">*</span>
-          <select id="seller-state">
-            <option value="">Select seller state</option>
-          </select>
-        </label>
-        <p>Used with place of supply to determine whether tax is split into CGST/SGST or charged as IGST.</p>
-      </div>
-      <div id="mapping-grid" class="mapping-grid"></div>
-      <div class="action-row">
-        <button id="convert-button" class="button button-primary" type="button">Convert report</button>
-        <span id="convert-status" class="field-hint" role="status" aria-live="polite"></span>
-      </div>
+      <p id="file-status" class="field-hint" role="status" aria-live="polite">Your file is processed on this device. No column setup is needed.</p>
     </section>
 
     <section id="result-section" class="panel hidden" aria-labelledby="result-heading">
       <div class="section-heading">
-        <span class="step">03</span>
+        <span class="step">02</span>
         <div>
           <h2 id="result-heading">Review and download</h2>
           <p id="result-summary"></p>
