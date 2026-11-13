@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Convert ecommerce sales reports into an Indian GST sales register in your browser.">
+  <title>GST Sales Register Converter</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <header class="page-header">
+      <div class="brand-mark" aria-hidden="true">GST</div>
+      <div>
+        <p class="eyebrow">INDIA · SALES REPORT TOOL</p>
+        <h1>GST sales register converter</h1>
+        <p class="subtitle">Turn an ecommerce sales report into a clean, GST-ready sales register.</p>
+      </div>
+    </header>
+
+    <section class="notice" aria-label="Privacy and tax notice">
+      <span class="notice-icon" aria-hidden="true">i</span>
+      <p><strong>Your file stays on this device.</strong> It is read and converted in your browser; no sales data is uploaded. Review the result with your tax professional before filing.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="upload-heading">
+      <div class="section-heading">
+        <span class="step">01</span>
+        <div>
+          <h2 id="upload-heading">Upload sales report</h2>
+          <p>Choose a CSV or Excel workbook (.csv, .xls, .xlsx).</p>
+        </div>
+      </div>
+      <label class="file-picker" for="file-input">
+        <span class="upload-icon" aria-hidden="true">↑</span>
+        <span><strong id="file-label">Choose a file</strong><small>CSV, XLS, or XLSX</small></span>
+        <input id="file-input" type="file" accept=".csv,.xls,.xlsx" aria-describedby="file-status">
+      </label>
+      <p id="file-status" class="field-hint" aria-live="polite">Files are processed locally in your browser.</p>
+      <div id="sheet-control" class="control-row hidden">
+        <label for="sheet-select">Worksheet</label>
+        <select id="sheet-select"></select>
+      </div>
+    </section>
+
+    <section id="setup-section" class="panel hidden" aria-labelledby="setup-heading">
+      <div class="section-heading">
+        <span class="step">02</span>
+        <div>
+          <h2 id="setup-heading">Confirm columns and tax settings</h2>
+          <p>We’ll match common headings automatically. Check each match before converting.</p>
+        </div>
+      </div>
+      <div class="seller-settings">
+        <label for="seller-state">Seller state / union territory <span class="required">*</span>
+          <select id="seller-state">
+            <option value="">Select seller state</option>
+          </select>
+        </label>
+        <p>Used with place of supply to determine whether tax is split into CGST/SGST or charged as IGST.</p>
+      </div>
+      <div id="mapping-grid" class="mapping-grid"></div>
+      <div class="action-row">
+        <button id="convert-button" class="button button-primary" type="button">Convert report</button>
+        <span id="convert-status" class="field-hint" role="status" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <section id="result-section" class="panel hidden" aria-labelledby="result-heading">
+      <div class="section-heading">
+        <span class="step">03</span>
+        <div>
+          <h2 id="result-heading">Review and download</h2>
+          <p id="result-summary"></p>
+        </div>
+      </div>
+      <div id="error-box" class="error-box hidden" role="alert"></div>
+      <div class="table-wrap">
+        <table>
+          <thead id="preview-head"></thead>
+          <tbody id="preview-body"></tbody>
+        </table>
+      </div>
+      <div class="action-row result-actions">
+        <button id="download-button" class="button button-primary" type="button">Download GST register CSV</button>
+        <span class="field-hint">CSV opens in Excel and common accounting tools.</span>
+      </div>
+    </section>
+
+    <footer>
+      <p>Output columns follow a generic GST sales register layout; this is not a GST portal filing utility.</p>
+    </footer>
+  </main>
+</body>
+</html>
